@@ -1,0 +1,15 @@
+import mysql.connector
+mycon=mysql.connector.connect(host="localhost",user="root",password="Ayaan#@$2014",database="students")
+if mycon.is_connected():
+    print("Connected to mysql")
+    r=int(input("Enter the roll no. of student="))
+    name=input("Enter name of the student")
+    gender=input("Enter the gender")
+    age=int(input("Enter the age"))
+    dept=input("Enter the department")
+    doa=input("Enter the date")
+    fees=int(input("Enter the fees"))
+    cursor=mycon.cursor()
+    cursor.execute("insert into stu(rollno,name,gender,age,dept,doa,fees) values({},'{}','{}',{},'{}','{}',{})".format(r, name, gender, age, dept, doa, fees))
+    mycon.commit()
+    mycon.close()
